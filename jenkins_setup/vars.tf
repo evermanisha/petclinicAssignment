@@ -2,6 +2,14 @@ variable "AWS_REGION" {
   default = "eu-west-1"
 }
 
+variable "ACCESS_KEY" {
+  default = "AKIA3KSU5JNTH4PX5LMB"
+}
+
+variable "SECRET_KEY" {
+  default = "/zRyuiP14IIYyDB7TH9tMni3clBaneSEw4r2F8UZ"
+}
+
 variable "PATH_TO_PRIVATE_KEY" {
   default = "mykey"
 }
