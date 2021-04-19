@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "Hello World-Push"'
-                sh -x ./packer/buildImage.sh
+                sh './packer/buildImage.sh'
                 
             }
         }
