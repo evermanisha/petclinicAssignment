@@ -4,10 +4,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "Hello World-Push"'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
+                sh -x packer/buildImage.sh
+                
             }
         }
     }
