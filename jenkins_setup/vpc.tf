@@ -115,3 +115,26 @@ resource "aws_route_table_association" "main-public-3-a" {
   route_table_id = aws_route_table.main-public.id
 }
 
+resource "aws_db_subnet_group" "default" {
+  name       = "main"
+  subnet_ids = [aws_subnet.main-public-1.id,aws_subnet.main-public-2.id]
+
+  tags = {
+    Name = "subnetgroup"
+  }
+}
+
+resource "aws_db_instance" "default" {
+  allocated_storage    = 10
+  engine               = "postgres"
+  engine_version       = "9.6.6"
+  instance_class       = "db.t2.micro"
+  name                 = "petclinic"
+  username             = "postgres"
+  password             = "petclinic"
+  db_subnet_group_name =  "${aws_db_subnet_group.default.id}"
+# character_set_name    = "UTF8"
+  skip_final_snapshot  = true
+  publicly_accessible = true
+    vpc_security_group_ids = [aws_security_group.allow-db-connect.id]
+}
